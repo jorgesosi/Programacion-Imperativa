@@ -15,7 +15,7 @@ int main (){
 	total=subtotal=num =0;
 	do{
 		do{		
-			printf("Ingrese una cantidad de producto: ");
+			printf("Ingrese una cantidad del producto: ");
 			scanf("%d",&cantidad);
 			while(getchar() != '\n');//frena el bucle infinito en caso de ingresar un valor no entero
 		}while( !(cantidad)  );// se analiza si el caracter es entero
