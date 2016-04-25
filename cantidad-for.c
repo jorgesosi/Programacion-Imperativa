@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define LAP 3
    
-char productos[15];
+//productos[15])[10] ;
 int cantidad[10];
 int unidad[10];
 int subtotal[10];
@@ -23,7 +23,6 @@ int main (){
 		while (getchar()!='\n');
 		switch (op){
 			case 1:
-			productos[i]="limones";
 			subtotal [i]=0;
 			unidad[i]=25;
 			printf("Ingrese la cantidad: \n");
@@ -68,7 +67,7 @@ int main (){
 	}
 printf("producto\tcantidad\t unidad\tsubtotal\n");
 for (int j=0; j< LAP; j++)
-	printf("%c\t\t%d\t\t%d\t\t%d\n",producto[j],cantidad[j],unidad[j],subtotal[j]);
+	printf("\t\t%d\t\t%d\t\t%d\n",cantidad[j],unidad[j],subtotal[j]);
 	
 printf("\t\t\t\t\ttotal:\t%d\n",total);
 
