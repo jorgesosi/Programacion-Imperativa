@@ -1,0 +1,19 @@
+Escribir en una hoja en blanco,
+
+Nombre, Apellido, 
+
+Preguntas:
+
+1) Que es git ?
+
+2) Que es github ?
+
+3) Nombre tipos de datos comunes para el lenguaje C.
+
+4) Escriba su cuenta de github, y el repositorio donde va a subir sus ejercicios para poder ser evaluados.
+
+    a) Muestre un menú con las opciones sumar, restar, multiplicar y dividir, el programa solicitará una opción, luego el ingreso de dos números, y realizará la tarea elegida.
+    Se debe usar una función para mostrar el menú, pedir los datos en el main.
+    También usar funciones para realizar los cálculos. 
+    
+    b) Que pida 10 números por teclado, los almacene en un array y muestre la suma.
