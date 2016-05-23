@@ -9,12 +9,13 @@ int main (){
 	printf ("%d, %d, %d,\n",a,*p, b);
 	cambiarvalor(p); 
 	b= *p +10;
+	p=&b;
 	//*p=*p +1;
-	printf ("%d, %d, %d",a,*p, b);
+	printf ("%d, %d, %d , %p",a,*p, b, p);
 	return 0;
 }
 
 int *cambiarvalor(int *a){
-	*a = *a +1;
+	*a = *a +10;
 	return a;
 }
