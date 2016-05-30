@@ -16,7 +16,10 @@ int main()
     printf("Ingrese una cantidad de producto: ");
     while(scanf("%d",&cantidad) != 1)
     {
-        printf("%*s\n",40,"caracter no valido\n");
+        printf("%*s\n",40,"caracter no valido\n");// coloca el string en el medio de la pantalla
+         printf("%*s\n",30,"caracter no valido\n");
+          printf("%*s\n",20,"caracter no valido\n");
+           printf("%*s\n",80,"caracter no valido\n");
         printf("Ingrese una cantidad de producto: ");
         while(getchar() != '\n');
     }
