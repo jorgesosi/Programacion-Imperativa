@@ -104,7 +104,7 @@ void buscar(){
 	printf("ingrese el nombre a buscar:  \n");
 	fgets(nom,50,stdin);
 	for(i=0;i<2;i++){
-			if (strcmp(nom, Contacto[i].nombre)<= 0){// compara dos string si nom el string nom esta dentro de contacto.nombre lo muestra ( <=)
+			if (strcmp(nom, Contacto[i].nombre)<= 0){// compara dos string si nom el string nom esta dentro de contacto.nombre lo muestra 
 				printf( "Nombre  : %s", Contacto[i].nombre);// si se coloca el vallor a comparar == 0 busca la coincidencia exacta
 				printf( "Apellido : %s", Contacto[i].apellido);
 				printf( "Direccion : %s",Contacto[i].direccion);
