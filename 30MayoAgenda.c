@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 /*
+ * menu opciones cargar, mostrar buscar
  * ingresar minimo 5 datos en la estructura contactos
- * mostrar meni opciones de toso locontactos
+ * mostrar todos los contactos
  * buscar un contacto por nombre
  * titulos e identificador
  * se utiliza un bucle for solo para cargar una cantidad limitada de libros
@@ -11,7 +12,8 @@
  * @param char apellido[50] se ingresa el nombre y apellido del autor/es 
  * @param char direccion[50] se ingresa un tema de libro, igual que los anteriores con um maximod e 50 caracteres
  * @param int id_libro recibe un valor numerico entero
- * por ahora no tiene ninguna validacion soloq eu el id _libro sea un numero y no cadena de caracteres
+ * por ahora no tiene ninguna validacion solo que el id _libro sea un numero y no cadena de caracteres
+ * 
  * */
 
 struct Contactos {
@@ -71,8 +73,8 @@ void mostrar(){
 		printf( "Nombre  : %s", Contacto[i].nombre);
 		printf( "Apellido : %s", Contacto[i].apellido);
 		printf( "Direccion : %s",Contacto[i].direccion);
-		printf( "Direccion : %s",Contacto[i].ciudad);
-		printf( "Identificadorr : %d\n\n", Contacto[i].telefono);
+		printf( "Ciudad : %s",Contacto[i].ciudad);
+		printf( "Identificador : %d\n\n", Contacto[i].telefono);
 	}
 	//return 0;
 }
@@ -108,8 +110,8 @@ void buscar(){
 				printf( "Nombre  : %s", Contacto[i].nombre);// si se coloca el vallor a comparar == 0 busca la coincidencia exacta
 				printf( "Apellido : %s", Contacto[i].apellido);
 				printf( "Direccion : %s",Contacto[i].direccion);
-				printf( "Direccion : %s",Contacto[i].ciudad);
-				printf( "Identificadorr : %d\n\n", Contacto[i].telefono);
+				printf( "Ciudad : %s",Contacto[i].ciudad);
+				printf( "Identificador : %d\n\n", Contacto[i].telefono);
 			}
 			
 	}
