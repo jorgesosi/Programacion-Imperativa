@@ -13,7 +13,7 @@
  * @param char direccion[50] se ingresa un tema de libro, igual que los anteriores con um maximod e 50 caracteres
  * @param int id_libro recibe un valor numerico entero
  * por ahora no tiene ninguna validacion solo que el id _libro sea un numero y no cadena de caracteres
- * 
+ * /home/jorge/Documentos/sistemas 2016/Programacion-Imperativa/prueba.txt
  * */
 
 struct Contactos {
@@ -28,7 +28,6 @@ void cargar();
 void mostrar();
 void buscar();
 int main(){
-	//struct Contactos Contacto[5];
 	int  opt;
 	
 	/*for(i=0;i<5;i++){
