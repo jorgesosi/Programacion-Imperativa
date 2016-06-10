@@ -11,11 +11,11 @@ struct Contactos {
 struct Contactos Contacto;
 void cargar();
 void mostrar();
-void buscar(char nom[5]);
+void buscar();
 FILE *archivo;
 int main(){
 	//int posArch;
-	int  opt, opt1;
+	int  opt;
 	for(;;){
 		printf("Ingrese una de las siguientes opciones:\n");
 		printf("1- Ingrese un contacto\n");
@@ -36,26 +36,7 @@ int main(){
 			break;
 			case 3:
 			system("clear");
-			printf("ingrese una opcion de busqueda\n");
-			printf("1- Buscar por nombre\n");
-			printf("2- Buscar por apellido\n");
-			printf("3- cancelar\n");
-			scanf("%d",&opt1);
-			fflush(stdin);
-			getchar();
-			switch (opt1){
-				case 1:
-				buscar("nom");
-				break;
-				case 2:
-				buscar("ape");
-				break;
-				case 3:
-				exit(1);
-				default:
-				break;				
-			}
-	//		buscar();
+			buscar();
 			break;
 			case 4:
 			exit(1);
@@ -72,8 +53,14 @@ void mostrar(){
 	archivo=fopen("/home/jorge/Documentos/sistemas 2016/Programacion-Imperativa/prueba.txt", "r");
 	//for(i=0;i<2;i++){
 	while(!feof(archivo)){
-		printf("Contacto Numero: %d\n", cont);
+		
+		
 		fgets(Contacto.nombre, 50, archivo);
+		if (strlen(Contacto.nombre )== 1){
+			
+			break;
+		}
+		printf("Contacto Numero: %d\n", cont);
 		printf( "Nombre  : %s", Contacto.nombre);
 		fgets(Contacto.apellido,50,archivo);
 		printf( "Apellido : %s", Contacto.apellido);
@@ -91,7 +78,6 @@ void mostrar(){
 	//return 0;
 }
 void cargar(){
-		//FILE *archivo;
 		archivo=fopen("/home/jorge/Documentos/sistemas 2016/Programacion-Imperativa/prueba.txt", "a+");
 	
 		printf("Ingrese el Nombre: \n");
@@ -119,22 +105,61 @@ void cargar(){
 	fclose(archivo);
 	
 }
-void buscar(char buscar[5]){
-	int i;
-	char bus[5];
+void buscar(){
+	archivo=fopen("/home/jorge/Documentos/sistemas 2016/Programacion-Imperativa/prueba.txt", "r");
+	int opt1;
 	char nom[50];
-	srtcpy(bus,buscar);
-	printf("ingrese el nombre a buscar:  \n");
-	fgets(nom,50,stdin);
-	for(i=0;i<2;i++){
-			if (strcmp(nom, Contacto.nombre)<= 0){// compara dos string si nom el string nom esta dentro de contacto.nombre lo muestra 
-				printf( "Nombre  : %s", Contacto.nombre);// si se coloca el vallor a comparar == 0 busca la coincidencia exacta
-				printf( "Apellido : %s", Contacto.apellido);
-				printf( "Direccion : %s",Contacto.direccion);
-				printf( "Ciudad : %s",Contacto.ciudad);
-				printf( "Identificador : %s\n\n", Contacto.telefono);
+	printf("ingrese una opcion de busqueda\n");
+			printf("1- Buscar por nombre\n");
+			printf("2- Buscar por apellido\n");
+			printf("3- cancelar\n");
+			scanf("%d",&opt1);
+			fflush(stdin);
+			getchar();
+			switch (opt1){
+				case 1:
+					printf("ingrese el nombre a buscar:  \n");
+					fgets(nom,50,stdin);
+					while(!feof(archivo)){
+						fgets(Contacto.nombre, 50, archivo);
+						fgets(Contacto.apellido,50,archivo);
+						fgets(Contacto.direccion,50,archivo);
+						fgets(Contacto.ciudad ,50,archivo);
+						fgets(Contacto.telefono ,20,archivo);
+		
+						
+						if (strcmp(nom, Contacto.nombre)<= 0){// compara dos string si nom el string nom esta dentro de contacto.nombre lo muestra 
+							printf( "Nombre  : %s", Contacto.nombre);// si se coloca el vallor a comparar == 0 busca la coincidencia exacta
+							printf( "Apellido : %s", Contacto.apellido);
+							printf( "Direccion : %s",Contacto.direccion);
+							printf( "Ciudad : %s",Contacto.ciudad);
+							printf( "Identificador : %s\n\n", Contacto.telefono);
+						}
+					}
+				break;
+				case 2:
+					printf("ingrese el nombre a buscar:  \n");
+					fgets(nom,50,stdin);
+					while(!feof(archivo)){
+						fgets(Contacto.nombre, 50, archivo);
+						fgets(Contacto.apellido,50,archivo);
+						fgets(Contacto.direccion,50,archivo);
+						fgets(Contacto.ciudad ,50,archivo);
+						fgets(Contacto.telefono ,20,archivo);
+						if (strcmp(nom, Contacto.apellido)<= 0){// compara dos string si el string nom esta dentro de contacto.nombre lo muestra 
+							printf( "Nombre  : %s", Contacto.nombre);// si se coloca el vallor a comparar == 0 busca la coincidencia exacta
+							printf( "Apellido : %s", Contacto.apellido);
+							printf( "Direccion : %s",Contacto.direccion);
+							printf( "Ciudad : %s",Contacto.ciudad);
+							printf( "Identificador : %s\n\n", Contacto.telefono);
+						}
+					}
+				break;
+				case 3:
+				break;
+				default:
+				break;				
 			}
-			
-	}
+	fclose(archivo);
 }
 
