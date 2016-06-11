@@ -27,21 +27,20 @@ int main(){
 		getchar();
 		switch(opt){
 			case 1:
-			system("clear");
-			cargar();
-			break;
+				system("clear");
+				cargar();
+				break;
 			case 2:
-			system("clear");
-			mostrar();
-			break;
+				system("clear");
+				mostrar();
+				break;
 			case 3:
-			system("clear");
-			buscar();
-			break;
+				system("clear");
+				buscar();
+				break;
 			case 4:
-			exit(1);
+				exit(1);
 			default:break;
-			
 		}
 	}
 	system("clear");	
@@ -52,17 +51,14 @@ void mostrar(){
 	
 	archivo=fopen("/home/jorge/Documentos/sistemas 2016/Programacion-Imperativa/prueba.txt", "r");
 	//for(i=0;i<2;i++){
-	while(!feof(archivo)){
-		
-		
+	while(!feof(archivo)){//mientras no este en el final del archivo carga los datos existentes
 		fgets(Contacto.nombre, 50, archivo);
-		if (strlen(Contacto.nombre )== 1){
-			
-			break;
+		if (strlen(Contacto.nombre )== 1){//En el caso de que llegue al final del archivo sale del bucle y no imprime el ultimo registro 2 veces
+			break;// se podria probar si con do while no es mas eficiente.
 		}
-		printf("Contacto Numero: %d\n", cont);
-		printf( "Nombre  : %s", Contacto.nombre);
-		fgets(Contacto.apellido,50,archivo);
+		printf("Contacto Numero: %d\n", cont);//desde aca se cargan los datos guardados en archivo y se muestran en pantalla
+		printf( "Nombre  : %s", Contacto.nombre);//este bucle carga los datos gusdados en orden en el archivo y se los asigna 
+		fgets(Contacto.apellido,50,archivo);//a la estructura Contacto
 		printf( "Apellido : %s", Contacto.apellido);
 		fgets(Contacto.direccion,50,archivo);
 		printf( "Direccion : %s",Contacto.direccion);
@@ -71,7 +67,7 @@ void mostrar(){
 		fgets(Contacto.telefono ,20,archivo);
 		printf( "Identificador : %s", Contacto.telefono);
 		getchar();
-		cont++;
+		cont++;// este contador esel que se incremetna y se muestra antes de cada nombre. 
 		system("clear");
 	}
 	fclose(archivo);
@@ -83,7 +79,7 @@ void cargar(){
 		printf("Ingrese el Nombre: \n");
 		fgets(Contacto.nombre, 50, stdin);// se usa para cargar string con espacios asigna nombre de la variable, longitoud  y forma de ingreso
 		printf("Ingrese el Apellido: \n");
-		fgets(Contacto.apellido, 50, stdin);
+		fgets(Contacto.apellido, 50, stdin);// fgets asigna lo ingresado por pantalla a la variable correspondietne de la estructura
 		printf("Ingrese direccion: \n");
 		fgets(Contacto.direccion, 50, stdin);
 		printf("Ingrese ciudad: \n");
@@ -97,9 +93,9 @@ void cargar(){
 		}*/
 		//getchar();// toma el enter despues del interger, sino es tomado por el primer fgets() o scanf() siguente como valor vacio
 		system("clear");// limpia la pantalla para cargar el nuevo libro
-		fprintf(archivo,"%s", Contacto.nombre);
-		fprintf(archivo,"%s", Contacto.apellido);
-		fprintf(archivo,"%s", Contacto.direccion);
+		fprintf(archivo,"%s", Contacto.nombre);//imprime los valores cargados en la estructura en el archivo
+		fprintf(archivo,"%s", Contacto.apellido);//los datos fueron cargados en la estructura pero la estructura en si no es 
+		fprintf(archivo,"%s", Contacto.direccion);//almacenada en el archivo, para poder realizar esto se debe utilizar fwrite 
 		fprintf(archivo,"%s", Contacto.ciudad);
 		fprintf(archivo,"%s\n", Contacto.telefono);
 	fclose(archivo);
@@ -126,9 +122,7 @@ void buscar(){
 						fgets(Contacto.direccion,50,archivo);
 						fgets(Contacto.ciudad ,50,archivo);
 						fgets(Contacto.telefono ,20,archivo);
-		
-						
-						if (strcmp(nom, Contacto.nombre)<= 0){// compara dos string si nom el string nom esta dentro de contacto.nombre lo muestra 
+						if (strcmp(nom, Contacto.nombre)== 0){// compara dos string si nom el string nom esta dentro de contacto.nombre lo muestra 
 							printf( "Nombre  : %s", Contacto.nombre);// si se coloca el vallor a comparar == 0 busca la coincidencia exacta
 							printf( "Apellido : %s", Contacto.apellido);
 							printf( "Direccion : %s",Contacto.direccion);
@@ -138,7 +132,7 @@ void buscar(){
 					}
 				break;
 				case 2:
-					printf("ingrese el nombre a buscar:  \n");
+					printf("ingrese el apellido a buscar:  \n");
 					fgets(nom,50,stdin);
 					while(!feof(archivo)){
 						fgets(Contacto.nombre, 50, archivo);
@@ -146,7 +140,7 @@ void buscar(){
 						fgets(Contacto.direccion,50,archivo);
 						fgets(Contacto.ciudad ,50,archivo);
 						fgets(Contacto.telefono ,20,archivo);
-						if (strcmp(nom, Contacto.apellido)<= 0){// compara dos string si el string nom esta dentro de contacto.nombre lo muestra 
+						if (strcmp(nom, Contacto.apellido)== 0){// compara dos string si el string nom esta dentro de contacto.nombre lo muestra 
 							printf( "Nombre  : %s", Contacto.nombre);// si se coloca el vallor a comparar == 0 busca la coincidencia exacta
 							printf( "Apellido : %s", Contacto.apellido);
 							printf( "Direccion : %s",Contacto.direccion);
