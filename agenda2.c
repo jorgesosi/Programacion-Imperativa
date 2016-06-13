@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <process.h>
 #include <string.h>
-#include <ctype.h>
+#include <ctype.h>// para usar funciones que trabajen sobre caracteres
 void intro(void);
 void modif(void);
 void listar(void);
@@ -31,7 +30,9 @@ int main(void){
 		printf("5- FINALIZAR\n");
 		printf("Introducir el nro de opcion deseado");
 		opc=getchar();// ingresa la opcion de 1 a 5;
+		fflush(stdin);
 		getchar();
+		
 		switch(opc){
 			case'1': intro();break;
 			case'2': modif();break;
@@ -67,28 +68,30 @@ void intro (void){  /*introduce datos en el archivo*/
 	fclose(fichero);// se cierra el archivo
 };
 void modif(void){
-system("clear");
-tama=sizeof(datos);//verifica el tamaño de ka estructura y se la asigna a la variable
-if((fichero=fopen("/home/jorge/Documentos/sistemas 2016/Programacion-Imperativa/agenda.txt","r+"))==NULL) error();
-printf("Introduzca el Nombre a modificar: ");
-fgets(nom,30,stdin);// se carga el conjunto de datos a buscar en la estructura, pueden ser varios 
-system("clear");
-	while(!feof(fichero)){
-		fread(&datos,sizeof(datos),1,fichero);// lee dentro d ela estructura datos 1 solo conjunto de datos, 
-		if(strcmp(datos.apellido,nom)==1){// no llega al final de archivo imprime por pantalla el conjunto de datos encontrado
-			printf("1- APELLIDO: %s",datos.apellido);
-			printf("2- NOMBRE: %s",datos.nombre);
-			printf("3- DIRECCION: %s",datos.direccion);
-			printf("4-TELEFONO: %s",datos.telefono);
-			printf("5- CIUDAD: %s",datos.ciudad);
-			printf("6- FIN MODIFICACIONES");
+	system("clear");
+	tama=sizeof(datos);//verifica el tamaño de ka estructura y se la asigna a la variable
+	if((fichero=fopen("/home/jorge/Documentos/sistemas 2016/Programacion-Imperativa/agenda.txt","r+"))==NULL) error();
+		printf("Introduzca el Nombre a modificar: ");
+		fgets(nom,30,stdin);// se carga el conjunto de datos a buscar en la estructura, pueden ser varios 
+		getchar();
+		system("clear");
+		while(!feof(fichero)){
+			fread(&datos,sizeof(datos),1,fichero);// lee dentro d ela estructura datos 1 solo conjunto de datos, 
+			if(strcmp(datos.apellido,nom)==0){// no llega al final de archivo imprime por pantalla el conjunto de datos encontrado
+				printf("1- APELLIDO: %s",datos.apellido);
+				printf("2- NOMBRE: %s",datos.nombre);
+				printf("3- DIRECCION: %s",datos.direccion);
+				printf("4-TELEFONO: %s",datos.telefono);
+				printf("5- CIUDAD: %s",datos.ciudad);
+				printf("6- FIN MODIFICACIONES");
 
-			while(opc!='6'){
-			printf("campo a modificar: ");// se selecciona el campo a modificar
-				opc=getchar();
-				//clreol();
+				while(opc!='6'){
+					printf("campo a modificar: ");// se selecciona el campo a modificar
+					opc=getchar();
+					getchar();
+					//clreol();
 					switch(opc){// se toma por pantalla el nuevo dato
-						case'1':fgets(datos.apellido,30,stdin);break;
+						case'1':printf("Nuevo nombre: ");fgets(datos.apellido,30,stdin);break;
 						case'2':fgets(datos.nombre,30,stdin);break;
 						case'3':fgets(datos.direccion,30,stdin);break;
 						case'4':fgets(datos.telefono,30,stdin);break;
@@ -97,11 +100,11 @@ system("clear");
 						fwrite(&datos,sizeof(datos),1,fichero);break;// escribe los datos en el archivo
 						default: break;
 					}
-			}
+				}
 
-		      break;//sale del primer  bucle while al menu principal
-		      }
-	 }
+		      break;//sale del if menu principal
+			}
+	 }// cierra el while
 	fclose(fichero);// sale de la funcion cerrando el archivo
 };
 void error(void){// imprime mensaje por pantall en caso de no poder abrir el archivo
